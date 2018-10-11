@@ -2,3 +2,5 @@
 **/*.rs.bk
 example
 music.wav
+Cargo.lock
+Cargo.toml
