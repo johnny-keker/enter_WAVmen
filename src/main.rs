@@ -44,8 +44,9 @@ fn generate_wav(sample_rate: u32, num_samples: u32, bpm: u32) -> std::io::Result
       let avail_notes: Vec<f32> = notes.iter().filter(|&&n| n <= l).cloned().collect();
       let curr_note = rng.choose(&avail_notes).unwrap();
       let x = rng.gen::<f32>();
+      let y = rng.gen::<f32>();
       for i in 0..(curr_note * (secs_per_beat * sample_rate) as f32) as u32 {
-        buf.write_u8(((128.0 * (x * i as f32).sin()) + 64.0) as u8)?;
+        buf.write_u8(((((y * 32.0) + 32.0) * (x * i as f32).sin()) - 128.0) as u8)?;
       }
       l -= curr_note;
     }
