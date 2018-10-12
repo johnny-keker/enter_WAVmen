@@ -4,10 +4,13 @@ extern crate rand;
 use rand::prelude::*;
 use std::fs::File;
 use std::io::prelude::*;
+use std::env;
 
 fn main() {
+  let args: Vec<String> = env::args().collect();
+  let filename = &args[1];
   let wav: Vec<u8> = generate_wav(44100, 4, 120).unwrap();
-  let mut file = File::create("music.wav").unwrap();
+  let mut file = File::create(format!("out/{}.wav", filename)).unwrap();
   file.write(&wav).unwrap();
 }
 
