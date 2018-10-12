@@ -46,15 +46,26 @@ fn write_wav(sample_rate: u32, num_samples: u32, bpm: u32) {
     buf.write_u16::<LittleEndian>(8).unwrap(); // bitspersample
     buf.extend_from_slice(b"data"); // subcuhk2id
     buf.write_u32::<LittleEndian>(num_samples * sample_rate).unwrap(); // subchunk2size = num_samples * numchannels * bitspersample / 8
-    // !data! 
+    // !data!
+    let num_beats = (bpm * num_samples) / 4 / 60;
+    println!("num_beats = {}", num_beats);
+    let secs_per_beat = num_samples / num_beats;
+    println!("secs_per_beat = {}", secs_per_beat);
+    let notes: [f32; 5] = [0.5, 0.25, 0.125, 0.0625, 0.03125];
     let mut rng = thread_rng();
-    let quarter_note = bpm as f32 / 240.0; 
-    for i in 0..(2 * num_samples) {
+
+    for _ in 0..(num_beats) {
+      let mut l = 1.0;
+      while l != 0.0 {
+        let avail_notes: Vec<f32> = notes.iter().filter(|&&n| n <= l).cloned().collect();
+        let curr_note = rng.choose(&avail_notes).unwrap();
+
         let x = rand::random::<f32>();
-        println!("{}", quarter_note);
-        for j in 0..((quarter_note * sample_rate as f32) as u32) {
-            buf.write_u8((128.0 * (2.0 * x * j as f32).sin()) as u8).unwrap();
+        for i in 0..(curr_note * (secs_per_beat * sample_rate) as f32) as u32 {
+          buf.write_u8(((128.0 * (x * i as f32).sin()) + 64.0) as u8).unwrap();
         }
+        l -= curr_note;
+      }
     }
     let mut size_buf: Vec<u8> = Vec::new();
     size_buf.write_u32::<LittleEndian>(buf.len() as u32 - 8);
