@@ -9,7 +9,7 @@ use std::env;
 fn main() {
   let args: Vec<String> = env::args().collect();
   let filename = &args[1];
-  let wav: Vec<u8> = generate_wav(44100, 4, 120).unwrap();
+  let wav: Vec<u8> = generate_wav(44100, 20, 120).unwrap();
   let mut file = File::create(format!("out/{}.wav", filename)).unwrap();
   file.write(&wav).unwrap();
 }
@@ -36,17 +36,18 @@ fn generate_wav(sample_rate: u32, num_samples: u32, bpm: u32) -> std::io::Result
 
   let num_beats = (bpm * num_samples) / 4 / 60;
   let secs_per_beat = num_samples / num_beats;
-  let notes: [f32; 5] = [0.5, 0.25, 0.125, 0.0625, 0.03125];
+  let notes: [f32; 4] = [0.5, 0.25, 0.125, 0.0625];
+  let am: [f32; 7] = [440.0, 493.88, 523.25, 587.33, 659.25, 698.46, 783.99];
   let mut rng = thread_rng();
   for _ in 0..(num_beats) {
     let mut l = 1.0;
     while l != 0.0 {
       let avail_notes: Vec<f32> = notes.iter().filter(|&&n| n <= l).cloned().collect();
       let curr_note = rng.choose(&avail_notes).unwrap();
-      let x = rng.gen::<f32>();
       let y = rng.gen::<f32>();
+      let curr_am = rng.choose(&am).unwrap();
       for i in 0..(curr_note * (secs_per_beat * sample_rate) as f32) as u32 {
-        buf.write_u8(((((y * 32.0) + 32.0) * (x * i as f32).sin()) - 128.0) as u8)?;
+        buf.write_u8(((((y * 32.0) + 32.0) * (2.0 * std::f64::consts::PI as f32 * curr_am * (i as f32) / (sample_rate as f32) as f32).sin()) - 128.0) as u8)?;
       }
       l -= curr_note;
     }
