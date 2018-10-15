@@ -40,18 +40,25 @@ fn generate_wav(sample_rate: u32, num_samples: u32, bpm: u32) -> std::io::Result
   let notes: [f32; 4] = [0.5, 0.25, 0.125, 0.0625];
   let am: [f32; 7] = [440.0, 493.88, 523.25, 587.33, 659.25, 698.46, 783.99];
   let am_bass: [f32; 7] = [220.0, 246.94, 261.63, 146.83, 164.81, 174.61, 196.00];
+  let am_bass_third: [f32; 7] = [261.63, 146.83, 164.81, 174.61, 196.00, 220.00, 246.94];
+  let am_bass_quint: [f32; 7] = [146.83, 174.61, 196.00, 220.00, 246.94, 261.63, 293.66];
   let mut rng = thread_rng();
   for step in 0..(num_beats) {
     let mut l = 1.0;
     let curr_bass = if step == 0 || step == num_beats { 220.0 } else { *rng.choose(&am_bass).unwrap() };
+    let index = am_bass.iter().position(|&r| r == curr_bass).unwrap();
+    let curr_bass_third = am_bass_third[index];
+    let curr_bass_quint = am_bass_quint[index];
     while l != 0.0 {
       let avail_notes: Vec<f32> = notes.iter().filter(|&&n| n <= l).cloned().collect();
       let curr_note = rng.choose(&avail_notes).unwrap();
       let y = rng.gen::<f32>();
       let curr_am = rng.choose(&am).unwrap();
       for i in 0..(curr_note * (secs_per_beat * sample_rate) as f32) as u32 {
-        let bass = 32.0 * (2.0 * PI * curr_bass * (i as f32) / (sample_rate as f32) as f32).sin();
-        buf.write_u8(((((y * 32.0) + 32.0) * (2.0 * PI * curr_am * (i as f32) / (sample_rate as f32) as f32).sin()) - 128.0 + bass) as u8)?;
+        let bass = 16.0 * (2.0 * PI * curr_bass * (i as f32) / (sample_rate as f32) as f32).sin();
+        let bass_third = 16.0 * (2.0 * PI * curr_bass_third * (i as f32) / (sample_rate as f32) as f32).sin();
+        let bass_quint = 16.0 * (2.0 * PI * curr_bass_quint * (i as f32) / (sample_rate as f32) as f32).sin();
+        buf.write_u8(((((y * 16.0) + 16.0) * (2.0 * PI * curr_am * (i as f32) / (sample_rate as f32) as f32).sin()) - 128.0 + bass + bass_third + bass_quint) as u8)?;
       }
       l -= curr_note;
     }
