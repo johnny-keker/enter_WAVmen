@@ -42,6 +42,7 @@ fn generate_wav(sample_rate: u32, num_samples: u32, bpm: u32) -> std::io::Result
   let num_beats = (bpm * num_samples) / 4 / 60;
   let secs_per_beat = num_samples / num_beats;
   let notes: [f32; 4] = [0.5, 0.25, 0.125, 0.0625];
+  let a: notes::key_t = notes::AM;
   let am: Vec<f32> = notes::AM_LEAD.into_iter().map(|n| n.into_iter().map(|e| *e)).flatten().collect(); 
   let am_bass: [f32; 7] = [220.0, 246.94, 261.63, 146.83, 164.81, 174.61, 196.00];
   let am_bass_third: [f32; 7] = [261.63, 146.83, 164.81, 174.61, 196.00, 220.00, 246.94];
