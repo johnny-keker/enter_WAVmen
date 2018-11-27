@@ -1,9 +1,11 @@
+/* Useful type aliases */
 pub type scale_t = [f32; 7];
 pub type lead_t<'a> = [&'a scale_t; 4];
 pub type chord_t = [f32; 3];
 pub type chord_pool_t<'a> = [&'a chord_t; 14];
 pub type key_t<'a> = (lead_t<'a>, chord_pool_t<'a>);
 
+/* Single notes */
 pub const C0: f32 = 16.35;
 pub const C_SH_0: f32 = 17.32;
 pub const D0: f32 = 18.35;
@@ -113,6 +115,7 @@ pub const A8: f32 = 7040.0;
 pub const A_SH_8: f32 = 7458.62;
 pub const B8: f32 = 7902.13;
 
+/* Scales */
 pub static C0_MINOR_SCALE: scale_t = [C0, D0, D_SH_0, F0, G0, G_SH_0, A_SH_0];
 pub static C_SH_0_MINOR_SCALE: scale_t = [C_SH_0, D_SH_0, E0, F_SH_0, G_SH_0, A0, B0];
 pub static D0_MINOR_SCALE: scale_t = [D0, E0, F0, G0, A0, A_SH_0, C1];
@@ -283,6 +286,7 @@ pub static A6_MAJOR_SCALE: scale_t = [A6, B6, C_SH_7, D7, E7, F_SH_7, G_SH_7];
 pub static A_SH_6_MAJOR_SCALE: scale_t = [A_SH_6, C7, D7, D_SH_7, F7, G7, A7];
 pub static B6_MAJOR_SCALE: scale_t = [B6, C_SH_7, D_SH_7, E7, F_SH_7, G_SH_7, A_SH_7];
 
+/* Leads */
 pub static AM_LEAD: lead_t = [&A3_MINOR_SCALE, &A4_MINOR_SCALE, &A5_MINOR_SCALE, &A6_MINOR_SCALE];
 pub static A_SH_M_LEAD: lead_t = [&A_SH_3_MINOR_SCALE, &A_SH_4_MINOR_SCALE, &A_SH_5_MINOR_SCALE, &A_SH_6_MINOR_SCALE];
 pub static BM_LEAD: lead_t = [&B3_MINOR_SCALE, &B4_MINOR_SCALE, &B5_MINOR_SCALE, &B6_MINOR_SCALE];
@@ -309,6 +313,7 @@ pub static F_SH_LEAD: lead_t = [&F_SH_3_MAJOR_SCALE, &F_SH_4_MAJOR_SCALE, &F_SH_
 pub static G_LEAD: lead_t = [&G3_MAJOR_SCALE, &G4_MAJOR_SCALE, &G5_MAJOR_SCALE, &G6_MAJOR_SCALE];
 pub static G_SH_LEAD: lead_t = [&G_SH_3_MAJOR_SCALE, &G_SH_4_MAJOR_SCALE, &G_SH_5_MAJOR_SCALE, &G_SH_6_MAJOR_SCALE];
 
+/* Chords */
 pub static C1_MINOR_CHORD: chord_t = [C1, D_SH_1, F1];
 pub static C_SH_1_MINOR_CHORD: chord_t = [C_SH_1, E1, F_SH_1];
 pub static D1_MINOR_CHORD: chord_t = [D1, F1, G1];
@@ -420,6 +425,7 @@ pub static A3_DEM_CHORD: chord_t = [A3, C4, D_SH_4];
 pub static A_SH_3_DEM_CHORD: chord_t = [A_SH_3, C_SH_4, E4];
 pub static B3_DEM_CHORD: chord_t = [B3, D4, F4];
 
+/* Chord pools */
 pub static AM_CHORD_POOL: chord_pool_t = [&A1_MINOR_CHORD, &A2_MINOR_CHORD, &D2_MINOR_CHORD, &D3_MINOR_CHORD, &E2_MINOR_CHORD, &E3_MINOR_CHORD, &C2_MAJOR_CHORD, &C3_MAJOR_CHORD, &F2_MAJOR_CHORD, &F3_MAJOR_CHORD, &G2_MAJOR_CHORD, &G3_MAJOR_CHORD, &B1_DEM_CHORD, &B2_DEM_CHORD];
 pub static A_SH_M_CHORD_POOL: chord_pool_t = [&A_SH_1_MINOR_CHORD, &A_SH_2_MINOR_CHORD, &D_SH_2_MINOR_CHORD, &D_SH_3_MINOR_CHORD, &F2_MINOR_CHORD, &F3_MINOR_CHORD, &C_SH_2_MAJOR_CHORD, &C_SH_3_MAJOR_CHORD, &F_SH_2_MAJOR_CHORD, &F_SH_3_MAJOR_CHORD, &G_SH_2_MAJOR_CHORD, &G_SH_3_MAJOR_CHORD, &C2_DEM_CHORD, &C3_DEM_CHORD];
 pub static BM_CHORD_POOL: chord_pool_t = [&B1_MINOR_CHORD, &B2_MINOR_CHORD, &E2_MINOR_CHORD, &E3_MINOR_CHORD, &F_SH_2_MINOR_CHORD, &F_SH_3_MINOR_CHORD, &D2_MAJOR_CHORD, &D3_MAJOR_CHORD, &G2_MAJOR_CHORD, &G3_MAJOR_CHORD, &A2_MAJOR_CHORD, &A3_MAJOR_CHORD, &C_SH_2_DEM_CHORD, &C_SH_3_DEM_CHORD];
@@ -445,6 +451,7 @@ pub static F_SH_CHORD_POOL: chord_pool_t = [&G_SH_1_MINOR_CHORD, &G_SH_2_MINOR_C
 pub static G_CHORD_POOL: chord_pool_t = [&A1_MINOR_CHORD, &A2_MINOR_CHORD, &B1_MINOR_CHORD, &B2_MINOR_CHORD, &E2_MINOR_CHORD, &E3_MINOR_CHORD, &G1_MAJOR_CHORD, &G2_MAJOR_CHORD, &C2_MAJOR_CHORD, &C3_MAJOR_CHORD, &D2_MAJOR_CHORD, &D3_MAJOR_CHORD, &F_SH_2_DEM_CHORD, &F_SH_3_DEM_CHORD];
 pub static G_SH_CHORD_POOL: chord_pool_t = [&A_SH_1_MINOR_CHORD, &A_SH_2_MINOR_CHORD, &C2_MINOR_CHORD, &C3_MINOR_CHORD, &F2_MINOR_CHORD, &F3_MINOR_CHORD, &G_SH_1_MAJOR_CHORD, &G_SH_2_MAJOR_CHORD, &C_SH_2_MAJOR_CHORD, &C_SH_3_MAJOR_CHORD, &D_SH_2_MAJOR_CHORD, &D_SH_3_MAJOR_CHORD, &G2_DEM_CHORD, &G3_DEM_CHORD];
 
+/* Keys */
 pub static AM: key_t = (AM_LEAD, AM_CHORD_POOL);
 pub static A: key_t = (A_LEAD, A_CHORD_POOL);
 pub static A_SH_M: key_t = (A_SH_M_LEAD, A_SH_M_CHORD_POOL);

@@ -2,7 +2,8 @@ extern crate byteorder;
 extern crate rand;
 
 #[allow(dead_code)]
-mod notes;
+mod notes_data;
+mod notes_tools;
 
 use rand::prelude::*;
 use std::fs::File;
@@ -10,7 +11,6 @@ use std::io::prelude::*;
 use std::env;
 
 fn main() {
-  print!("{:?}", notes::A0);
   let args: Vec<String> = env::args().collect();
   let filename = &args[1];
   let wav: Vec<u8> = generate_wav(44100, 40, 120).unwrap();
@@ -42,8 +42,8 @@ fn generate_wav(sample_rate: u32, num_samples: u32, bpm: u32) -> std::io::Result
   let num_beats = (bpm * num_samples) / 4 / 60;
   let secs_per_beat = num_samples / num_beats;
   let notes: [f32; 4] = [0.5, 0.25, 0.125, 0.0625];
-  let a: notes::key_t = notes::AM;
-  let am: Vec<f32> = notes::AM_LEAD.into_iter().map(|n| n.into_iter().map(|e| *e)).flatten().collect(); 
+  let a: notes_data::key_t = notes_data::AM;
+  let am: Vec<f32> = notes_tools::get_vector_of_notes_from_lead(notes_data::AM_LEAD); 
   let am_bass: [f32; 7] = [220.0, 246.94, 261.63, 146.83, 164.81, 174.61, 196.00];
   let am_bass_third: [f32; 7] = [261.63, 146.83, 164.81, 174.61, 196.00, 220.00, 246.94];
   let am_bass_quint: [f32; 7] = [146.83, 174.61, 196.00, 220.00, 246.94, 261.63, 293.66];
