@@ -42,31 +42,24 @@ fn generate_wav(sample_rate: u32, num_samples: u32, bpm: u32) -> std::io::Result
   let num_beats = (bpm * num_samples) / 4 / 60;
   let secs_per_beat = num_samples / num_beats;
   let notes: [f32; 4] = [0.5, 0.25, 0.125, 0.0625];
-  let a: notes_data::key_t = notes_data::AM;
-  let am: Vec<f32> = notes_tools::get_vector_of_notes_from_lead(notes_data::AM_LEAD); 
-  let am_bass: [f32; 7] = [220.0, 246.94, 261.63, 146.83, 164.81, 174.61, 196.00];
-  let am_bass_third: [f32; 7] = [261.63, 146.83, 164.81, 174.61, 196.00, 220.00, 246.94];
-  let am_bass_quint: [f32; 7] = [146.83, 174.61, 196.00, 220.00, 246.94, 261.63, 293.66];
+  let key: notes_tools::UserKey = notes_tools::init_notes();
   let mut rng = thread_rng();
   for step in 0..(num_beats) {
     let note_shift_range = rng.gen_range(2, 5);
     let mut l = 1.0;
-    let curr_bass = if step == 0 || step == num_beats { 220.0 } else { *rng.choose(&am_bass).unwrap() };
-    let index = am_bass.iter().position(|&r| r == curr_bass).unwrap();
-    let curr_bass_third = am_bass_third[index];
-    let curr_bass_quint = am_bass_quint[index];
-    let mut curr_am_i = rng.gen_range(0, am.len());
+    let cur_chord: notes_data::Chord = **rng.choose(&key.chords).unwrap();
+    let mut curr_i = rng.gen_range(0, key.lead.len());
     while l != 0.0 {
       let avail_notes: Vec<f32> = notes.iter().filter(|&&n| n <= l).cloned().collect();
       let curr_note = rng.choose(&avail_notes).unwrap();
       let y = rng.gen::<f32>();
-      curr_am_i = rng.gen_range(curr_am_i.checked_sub(note_shift_range).unwrap_or(0), std::cmp::min(curr_am_i + note_shift_range, am.len()));
-      let curr_am = am[curr_am_i];
+      curr_i = rng.gen_range(curr_i.checked_sub(note_shift_range).unwrap_or(0), std::cmp::min(curr_i + note_shift_range, key.lead.len()));
+      let curr_n = key.lead[curr_i];
       for i in 0..(curr_note * (secs_per_beat * sample_rate) as f32) as u32 {
-        let bass = 16.0 * (2.0 * PI * curr_bass * (i as f32) / (sample_rate as f32) as f32).sin();
-        let bass_third = 16.0 * (2.0 * PI * curr_bass_third * (i as f32) / (sample_rate as f32) as f32).sin();
-        let bass_quint = 16.0 * (2.0 * PI * curr_bass_quint * (i as f32) / (sample_rate as f32) as f32).sin();
-        buf.write_u8(((((y * 16.0) + 16.0) * (2.0 * PI * curr_am * (i as f32) / (sample_rate as f32) as f32).sin()) - 128.0 + bass + bass_third + bass_quint) as u8)?;
+        let bass = 16.0 * (2.0 * PI * cur_chord[0] * (i as f32) / (sample_rate as f32) as f32).sin();
+        let bass_third = 16.0 * (2.0 * PI * cur_chord[1] * (i as f32) / (sample_rate as f32) as f32).sin();
+        let bass_quint = 16.0 * (2.0 * PI * cur_chord[2] * (i as f32) / (sample_rate as f32) as f32).sin();
+        buf.write_u8(((((y * 16.0) + 16.0) * (2.0 * PI * curr_n * (i as f32) / (sample_rate as f32) as f32).sin()) - 128.0 + bass + bass_third + bass_quint) as u8)?;
       }
       l -= curr_note;
     }
