@@ -1,11 +1,11 @@
 /* Useful type aliases */
 pub type Scale = [f32; 7];
-pub type Lead<'a> = [&'a Scale; 4];
+pub type Lead = [&'static Scale; 4];
 pub type Chord = [f32; 3];
-pub type ChordPool<'a> = [&'a Chord; 14];
-pub struct Key<'a> {
-    pub lead: Lead<'a>,
-    pub chords: ChordPool<'a>
+pub type ChordPool = [&'static Chord; 14];
+pub struct Key {
+    pub lead: Lead,
+    pub chords: ChordPool
 }
 
 /* Single notes */
