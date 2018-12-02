@@ -1,10 +1,6 @@
 extern crate byteorder;
 extern crate rand;
 
-#[allow(dead_code)]
-use notes_data;
-use notes_tools;
-
 use rand::prelude::*;
 use std::fs::File;
 use std::io::prelude::*;
