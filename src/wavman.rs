@@ -17,6 +17,12 @@ pub struct SoundProperties {
   iterator: u32,
 }
 
+pub struct PartProperties {
+  note: f32,
+  amplitude: f32,
+  chord: notes_data::Chord,
+}
+
 impl SoundProperties {
   pub fn seconds_per_beat(&self) -> u32 {
     (4 * 60) / self.bpm
@@ -66,24 +72,19 @@ pub fn generate_ambient(sample_rate: u32, num_samples: u32, bpm: u32) -> std::io
     (*-*)<Nya! Im sorry for bad architecture!
     ("Y")   usagi by @KaluginaMarina
 */
-fn write_part(
-  bufer: &mut Vec<u8>,
-  note: f32,
-  chord: notes_data::Chord,
-  y: f32,
-  props: &mut SoundProperties,
-) -> u32 {
+fn write_part(bufer: &mut Vec<u8>, sound: &mut PartProperties, props: &mut SoundProperties) -> u32 {
   use byteorder::{LittleEndian, WriteBytesExt};
   use std::f32::consts::PI;
   let j = props.iterator + props.thirty_second_note_duration();
   for i in props.iterator..j {
-    let bass = 16.0 * (2.0 * PI * chord[0] * (i as f32) / (props.sample_rate as f32) as f32).sin();
+    let bass =
+      16.0 * (2.0 * PI * sound.chord[0] * (i as f32) / (props.sample_rate as f32) as f32).sin();
     let bass_third =
-      16.0 * (2.0 * PI * chord[1] * (i as f32) / (props.sample_rate as f32) as f32).sin();
+      16.0 * (2.0 * PI * sound.chord[1] * (i as f32) / (props.sample_rate as f32) as f32).sin();
     let bass_quint =
-      16.0 * (2.0 * PI * chord[2] * (i as f32) / (props.sample_rate as f32) as f32).sin();
-    let lead = ((y * 16.0) + 16.0)
-      * (2.0 * PI * note * (i as f32) / (props.sample_rate as f32) as f32).sin()
+      16.0 * (2.0 * PI * sound.chord[2] * (i as f32) / (props.sample_rate as f32) as f32).sin();
+    let lead = ((sound.amplitude * 16.0) + 16.0)
+      * (2.0 * PI * sound.note * (i as f32) / (props.sample_rate as f32) as f32).sin()
       - 128.0;
     bufer
       .write_u8((lead + bass + bass_third + bass_quint) as u8)
@@ -99,9 +100,8 @@ fn generate_beat(
   props: &mut SoundProperties,
 ) {
   let mut rng = thread_rng(); // rand init
-  let note_shift_range = rng.gen_range(2, 5); // so we wouldnt have huge jumps
+  let note_shift_range = rng.gen_range(2, 4); // so we wouldnt have huge jumps
   let mut beat_remain = 1.0; // so we`ll know when beat is done
-  let curr_chord: notes_data::Chord = **rng.choose(&key.chords).unwrap(); // current chord, one for beat
   let mut curr_index = rng.gen_range(0, key.lead.len()) as u32; // so we wouldnt have huge jumps
   while beat_remain != 0.0 {
     let avail_durations: Vec<f32> = durations
@@ -114,10 +114,13 @@ fn generate_beat(
       curr_index.checked_sub(note_shift_range).unwrap_or(0),
       std::cmp::min(curr_index + note_shift_range, key.lead.len() as u32),
     ) as u32; // so we woudnt have huge jumps
-    let curr_note = key.lead[curr_index as usize]; // calculate current frequency
-    let y = 1.5; // Temporary
+    let mut sound = PartProperties {
+      note: key.lead[curr_index as usize],
+      amplitude: 1.5,
+      chord: **rng.choose(&key.chords).unwrap(),
+    };
     for _step in 0..(props.get_duration_in_parts(*curr_duration)) {
-      props.iterator = write_part(buf, curr_note, curr_chord, y, props);
+      props.iterator = write_part(buf, &mut sound, props);
     }
     beat_remain -= curr_duration;
   }
