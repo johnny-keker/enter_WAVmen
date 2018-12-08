@@ -4,8 +4,8 @@ pub type Lead = [&'static Scale; 3];
 pub type Chord = [f32; 3];
 pub type ChordPool = [&'static Chord; 7];
 pub struct Key {
-	pub lead: Lead,
-	pub chords: ChordPool
+  pub lead: Lead,
+  pub chords: ChordPool,
 }
 
 /* Single notes */
@@ -291,30 +291,70 @@ pub static B6_MAJOR_SCALE: Scale = [B6, C_SH_7, D_SH_7, E7, F_SH_7, G_SH_7, A_SH
 
 /* Leads */
 pub static AM_LEAD: Lead = [&A4_MINOR_SCALE, &A5_MINOR_SCALE, &A6_MINOR_SCALE];
-pub static A_SH_M_LEAD: Lead = [&A_SH_4_MINOR_SCALE, &A_SH_5_MINOR_SCALE, &A_SH_6_MINOR_SCALE];
+pub static A_SH_M_LEAD: Lead = [
+  &A_SH_4_MINOR_SCALE,
+  &A_SH_5_MINOR_SCALE,
+  &A_SH_6_MINOR_SCALE,
+];
 pub static BM_LEAD: Lead = [&B4_MINOR_SCALE, &B5_MINOR_SCALE, &B6_MINOR_SCALE];
 pub static CM_LEAD: Lead = [&C4_MINOR_SCALE, &C5_MINOR_SCALE, &C6_MINOR_SCALE];
-pub static C_SH_M_LEAD: Lead = [&C_SH_4_MINOR_SCALE, &C_SH_5_MINOR_SCALE, &C_SH_6_MINOR_SCALE];
+pub static C_SH_M_LEAD: Lead = [
+  &C_SH_4_MINOR_SCALE,
+  &C_SH_5_MINOR_SCALE,
+  &C_SH_6_MINOR_SCALE,
+];
 pub static DM_LEAD: Lead = [&D4_MINOR_SCALE, &D5_MINOR_SCALE, &D6_MINOR_SCALE];
-pub static D_SH_M_LEAD: Lead = [&D_SH_4_MINOR_SCALE, &D_SH_5_MINOR_SCALE, &D_SH_6_MINOR_SCALE];
+pub static D_SH_M_LEAD: Lead = [
+  &D_SH_4_MINOR_SCALE,
+  &D_SH_5_MINOR_SCALE,
+  &D_SH_6_MINOR_SCALE,
+];
 pub static EM_LEAD: Lead = [&E4_MINOR_SCALE, &E5_MINOR_SCALE, &E6_MINOR_SCALE];
 pub static FM_LEAD: Lead = [&F4_MINOR_SCALE, &F5_MINOR_SCALE, &F6_MINOR_SCALE];
-pub static F_SH_M_LEAD: Lead = [&F_SH_4_MINOR_SCALE, &F_SH_5_MINOR_SCALE, &F_SH_6_MINOR_SCALE];
+pub static F_SH_M_LEAD: Lead = [
+  &F_SH_4_MINOR_SCALE,
+  &F_SH_5_MINOR_SCALE,
+  &F_SH_6_MINOR_SCALE,
+];
 pub static GM_LEAD: Lead = [&G4_MINOR_SCALE, &G5_MINOR_SCALE, &G6_MINOR_SCALE];
-pub static G_SH_M_LEAD: Lead = [&G_SH_4_MINOR_SCALE, &G_SH_5_MINOR_SCALE, &G_SH_6_MINOR_SCALE];
+pub static G_SH_M_LEAD: Lead = [
+  &G_SH_4_MINOR_SCALE,
+  &G_SH_5_MINOR_SCALE,
+  &G_SH_6_MINOR_SCALE,
+];
 
 pub static A_LEAD: Lead = [&A4_MAJOR_SCALE, &A5_MAJOR_SCALE, &A6_MAJOR_SCALE];
-pub static A_SH_LEAD: Lead = [&A_SH_4_MAJOR_SCALE, &A_SH_5_MAJOR_SCALE, &A_SH_6_MAJOR_SCALE];
+pub static A_SH_LEAD: Lead = [
+  &A_SH_4_MAJOR_SCALE,
+  &A_SH_5_MAJOR_SCALE,
+  &A_SH_6_MAJOR_SCALE,
+];
 pub static B_LEAD: Lead = [&B4_MAJOR_SCALE, &B5_MAJOR_SCALE, &B6_MAJOR_SCALE];
 pub static C_LEAD: Lead = [&C4_MAJOR_SCALE, &C5_MAJOR_SCALE, &C6_MAJOR_SCALE];
-pub static C_SH_LEAD: Lead = [&C_SH_4_MAJOR_SCALE, &C_SH_5_MAJOR_SCALE, &C_SH_6_MAJOR_SCALE];
+pub static C_SH_LEAD: Lead = [
+  &C_SH_4_MAJOR_SCALE,
+  &C_SH_5_MAJOR_SCALE,
+  &C_SH_6_MAJOR_SCALE,
+];
 pub static D_LEAD: Lead = [&D4_MAJOR_SCALE, &D5_MAJOR_SCALE, &D6_MAJOR_SCALE];
-pub static D_SH_LEAD: Lead = [&D_SH_4_MAJOR_SCALE, &D_SH_5_MAJOR_SCALE, &D_SH_6_MAJOR_SCALE];
+pub static D_SH_LEAD: Lead = [
+  &D_SH_4_MAJOR_SCALE,
+  &D_SH_5_MAJOR_SCALE,
+  &D_SH_6_MAJOR_SCALE,
+];
 pub static E_LEAD: Lead = [&E4_MAJOR_SCALE, &E5_MAJOR_SCALE, &E6_MAJOR_SCALE];
 pub static F_LEAD: Lead = [&F4_MAJOR_SCALE, &F5_MAJOR_SCALE, &F6_MAJOR_SCALE];
-pub static F_SH_LEAD: Lead = [&F_SH_4_MAJOR_SCALE, &F_SH_5_MAJOR_SCALE, &F_SH_6_MAJOR_SCALE];
+pub static F_SH_LEAD: Lead = [
+  &F_SH_4_MAJOR_SCALE,
+  &F_SH_5_MAJOR_SCALE,
+  &F_SH_6_MAJOR_SCALE,
+];
 pub static G_LEAD: Lead = [&G4_MAJOR_SCALE, &G5_MAJOR_SCALE, &G6_MAJOR_SCALE];
-pub static G_SH_LEAD: Lead = [&G_SH_4_MAJOR_SCALE, &G_SH_5_MAJOR_SCALE, &G_SH_6_MAJOR_SCALE];
+pub static G_SH_LEAD: Lead = [
+  &G_SH_4_MAJOR_SCALE,
+  &G_SH_5_MAJOR_SCALE,
+  &G_SH_6_MAJOR_SCALE,
+];
 
 /* Chords */
 pub static C2_MINOR_CHORD: Chord = [C2, D_SH_2, F2];
@@ -465,55 +505,322 @@ pub static A_SH_5_DEM_CHORD: Chord = [A_SH_5, C_SH_6, E6];
 pub static B5_DEM_CHORD: Chord = [B5, D6, F6];
 
 /* Chord pools */
-pub static AM_CHORD_POOL: ChordPool = [&A3_MINOR_CHORD, &D4_MINOR_CHORD, &E4_MINOR_CHORD, &C4_MAJOR_CHORD, &F4_MAJOR_CHORD, &G4_MAJOR_CHORD, &B3_DEM_CHORD];
-pub static A_SH_M_CHORD_POOL: ChordPool = [&A_SH_3_MINOR_CHORD, &D_SH_4_MINOR_CHORD, &F4_MINOR_CHORD, &C_SH_4_MAJOR_CHORD, &F_SH_4_MAJOR_CHORD, &G_SH_4_MAJOR_CHORD, &C4_DEM_CHORD];
-pub static BM_CHORD_POOL: ChordPool = [&B3_MINOR_CHORD, &E4_MINOR_CHORD, &F_SH_4_MINOR_CHORD, &D4_MAJOR_CHORD, &G4_MAJOR_CHORD, &A4_MAJOR_CHORD, &C_SH_4_DEM_CHORD];
-pub static CM_CHORD_POOL: ChordPool = [&C3_MINOR_CHORD, &F3_MINOR_CHORD, &G3_MINOR_CHORD, &D_SH_3_MAJOR_CHORD, &G_SH_3_MAJOR_CHORD, &A_SH_3_MAJOR_CHORD, &D3_DEM_CHORD];
-pub static C_SH_M_CHORD_POOL: ChordPool = [&C_SH_3_MINOR_CHORD, &F_SH_3_MINOR_CHORD, &G_SH_3_MINOR_CHORD, &E3_MAJOR_CHORD, &A3_MAJOR_CHORD, &B3_MAJOR_CHORD, &D_SH_3_DEM_CHORD];
-pub static DM_CHORD_POOL: ChordPool = [&D3_MINOR_CHORD, &G3_MINOR_CHORD, &A3_MINOR_CHORD, &F3_MAJOR_CHORD, &A_SH_3_MAJOR_CHORD, &C4_MAJOR_CHORD, &E3_DEM_CHORD];
-pub static D_SH_M_CHORD_POOL: ChordPool = [&D_SH_3_MINOR_CHORD, &G_SH_3_MINOR_CHORD, &A_SH_3_MINOR_CHORD, &F_SH_3_MAJOR_CHORD, &B3_MAJOR_CHORD, &C_SH_4_MAJOR_CHORD, &F3_DEM_CHORD];
-pub static EM_CHORD_POOL: ChordPool = [&E3_MINOR_CHORD, &A3_MINOR_CHORD, &B3_MINOR_CHORD, &G3_MAJOR_CHORD, &C4_MAJOR_CHORD, &D4_MAJOR_CHORD, &F_SH_3_DEM_CHORD];
-pub static FM_CHORD_POOL: ChordPool = [&F3_MINOR_CHORD, &A_SH_3_MINOR_CHORD, &C4_MINOR_CHORD, &G_SH_3_MAJOR_CHORD, &C_SH_4_MAJOR_CHORD, &D_SH_4_MAJOR_CHORD, &G3_DEM_CHORD];
-pub static F_SH_M_CHORD_POOL: ChordPool = [&F_SH_3_MINOR_CHORD, &B3_MINOR_CHORD, &C_SH_4_MINOR_CHORD, &A3_MAJOR_CHORD, &D4_MAJOR_CHORD, &E4_MAJOR_CHORD, &G_SH_3_DEM_CHORD];
-pub static GM_CHORD_POOL: ChordPool = [&G3_MINOR_CHORD, &C4_MINOR_CHORD, &D4_MINOR_CHORD, &A_SH_3_MAJOR_CHORD, &D_SH_4_MAJOR_CHORD, &F4_MAJOR_CHORD, &A3_DEM_CHORD];
-pub static G_SH_M_CHORD_POOL: ChordPool = [&G_SH_3_MINOR_CHORD, &C_SH_4_MINOR_CHORD, &D_SH_4_MINOR_CHORD, &B3_MAJOR_CHORD, &E4_MAJOR_CHORD, &F_SH_4_MAJOR_CHORD, &A_SH_3_DEM_CHORD];
-pub static A_CHORD_POOL: ChordPool = [&B3_MINOR_CHORD, &C_SH_4_MINOR_CHORD, &F_SH_4_MINOR_CHORD, &A3_MAJOR_CHORD, &D4_MAJOR_CHORD, &E4_MAJOR_CHORD, &G_SH_4_DEM_CHORD];
-pub static A_SH_CHORD_POOL: ChordPool = [&C4_MINOR_CHORD, &D4_MINOR_CHORD, &G4_MINOR_CHORD, &A_SH_3_MAJOR_CHORD, &D_SH_4_MAJOR_CHORD, &F4_MAJOR_CHORD, &A4_DEM_CHORD];
-pub static B_CHORD_POOL: ChordPool = [&C_SH_4_MINOR_CHORD, &D_SH_4_MINOR_CHORD, &G_SH_4_MINOR_CHORD, &B3_MAJOR_CHORD, &E4_MAJOR_CHORD, &F_SH_4_MAJOR_CHORD, &A_SH_4_DEM_CHORD];
-pub static C_CHORD_POOL: ChordPool = [&D3_MINOR_CHORD, &E3_MINOR_CHORD, &A3_MINOR_CHORD, &C3_MAJOR_CHORD, &F3_MAJOR_CHORD, &G3_MAJOR_CHORD, &B3_DEM_CHORD];
-pub static C_SH_CHORD_POOL: ChordPool = [&D_SH_3_MINOR_CHORD, &F3_MINOR_CHORD, &A_SH_3_MINOR_CHORD, &C_SH_3_MAJOR_CHORD, &F_SH_3_MAJOR_CHORD, &G_SH_3_MAJOR_CHORD, &C4_DEM_CHORD];
-pub static D_CHORD_POOL: ChordPool = [&E3_MINOR_CHORD, &F_SH_3_MINOR_CHORD, &B3_MINOR_CHORD, &D3_MAJOR_CHORD, &G3_MAJOR_CHORD, &A3_MAJOR_CHORD, &C_SH_4_DEM_CHORD];
-pub static D_SH_CHORD_POOL: ChordPool = [&F3_MINOR_CHORD, &G3_MINOR_CHORD, &C4_MINOR_CHORD, &D_SH_3_MAJOR_CHORD, &G_SH_3_MAJOR_CHORD, &A_SH_3_MAJOR_CHORD, &D4_DEM_CHORD];
-pub static E_CHORD_POOL: ChordPool = [&F_SH_3_MINOR_CHORD, &G_SH_3_MINOR_CHORD, &C_SH_4_MINOR_CHORD, &E3_MAJOR_CHORD, &A3_MAJOR_CHORD, &B3_MAJOR_CHORD, &D_SH_4_DEM_CHORD];
-pub static F_CHORD_POOL: ChordPool = [&G3_MINOR_CHORD, &A3_MINOR_CHORD, &D4_MINOR_CHORD, &F3_MAJOR_CHORD, &A_SH_3_MAJOR_CHORD, &C4_MAJOR_CHORD, &E4_DEM_CHORD];
-pub static F_SH_CHORD_POOL: ChordPool = [&G_SH_3_MINOR_CHORD, &A_SH_3_MINOR_CHORD, &D_SH_4_MINOR_CHORD, &F_SH_3_MAJOR_CHORD, &B3_MAJOR_CHORD, &C_SH_4_MAJOR_CHORD, &F4_DEM_CHORD];
-pub static G_CHORD_POOL: ChordPool = [&A3_MINOR_CHORD, &B3_MINOR_CHORD, &E4_MINOR_CHORD, &G3_MAJOR_CHORD, &C4_MAJOR_CHORD, &D4_MAJOR_CHORD, &F_SH_4_DEM_CHORD];
-pub static G_SH_CHORD_POOL: ChordPool = [&A_SH_3_MINOR_CHORD, &C4_MINOR_CHORD, &F4_MINOR_CHORD, &G_SH_3_MAJOR_CHORD, &C_SH_4_MAJOR_CHORD, &D_SH_4_MAJOR_CHORD, &G4_DEM_CHORD];
+pub static AM_CHORD_POOL: ChordPool = [
+  &A3_MINOR_CHORD,
+  &D4_MINOR_CHORD,
+  &E4_MINOR_CHORD,
+  &C4_MAJOR_CHORD,
+  &F4_MAJOR_CHORD,
+  &G4_MAJOR_CHORD,
+  &B3_DEM_CHORD,
+];
+pub static A_SH_M_CHORD_POOL: ChordPool = [
+  &A_SH_3_MINOR_CHORD,
+  &D_SH_4_MINOR_CHORD,
+  &F4_MINOR_CHORD,
+  &C_SH_4_MAJOR_CHORD,
+  &F_SH_4_MAJOR_CHORD,
+  &G_SH_4_MAJOR_CHORD,
+  &C4_DEM_CHORD,
+];
+pub static BM_CHORD_POOL: ChordPool = [
+  &B3_MINOR_CHORD,
+  &E4_MINOR_CHORD,
+  &F_SH_4_MINOR_CHORD,
+  &D4_MAJOR_CHORD,
+  &G4_MAJOR_CHORD,
+  &A4_MAJOR_CHORD,
+  &C_SH_4_DEM_CHORD,
+];
+pub static CM_CHORD_POOL: ChordPool = [
+  &C3_MINOR_CHORD,
+  &F3_MINOR_CHORD,
+  &G3_MINOR_CHORD,
+  &D_SH_3_MAJOR_CHORD,
+  &G_SH_3_MAJOR_CHORD,
+  &A_SH_3_MAJOR_CHORD,
+  &D3_DEM_CHORD,
+];
+pub static C_SH_M_CHORD_POOL: ChordPool = [
+  &C_SH_3_MINOR_CHORD,
+  &F_SH_3_MINOR_CHORD,
+  &G_SH_3_MINOR_CHORD,
+  &E3_MAJOR_CHORD,
+  &A3_MAJOR_CHORD,
+  &B3_MAJOR_CHORD,
+  &D_SH_3_DEM_CHORD,
+];
+pub static DM_CHORD_POOL: ChordPool = [
+  &D3_MINOR_CHORD,
+  &G3_MINOR_CHORD,
+  &A3_MINOR_CHORD,
+  &F3_MAJOR_CHORD,
+  &A_SH_3_MAJOR_CHORD,
+  &C4_MAJOR_CHORD,
+  &E3_DEM_CHORD,
+];
+pub static D_SH_M_CHORD_POOL: ChordPool = [
+  &D_SH_3_MINOR_CHORD,
+  &G_SH_3_MINOR_CHORD,
+  &A_SH_3_MINOR_CHORD,
+  &F_SH_3_MAJOR_CHORD,
+  &B3_MAJOR_CHORD,
+  &C_SH_4_MAJOR_CHORD,
+  &F3_DEM_CHORD,
+];
+pub static EM_CHORD_POOL: ChordPool = [
+  &E3_MINOR_CHORD,
+  &A3_MINOR_CHORD,
+  &B3_MINOR_CHORD,
+  &G3_MAJOR_CHORD,
+  &C4_MAJOR_CHORD,
+  &D4_MAJOR_CHORD,
+  &F_SH_3_DEM_CHORD,
+];
+pub static FM_CHORD_POOL: ChordPool = [
+  &F3_MINOR_CHORD,
+  &A_SH_3_MINOR_CHORD,
+  &C4_MINOR_CHORD,
+  &G_SH_3_MAJOR_CHORD,
+  &C_SH_4_MAJOR_CHORD,
+  &D_SH_4_MAJOR_CHORD,
+  &G3_DEM_CHORD,
+];
+pub static F_SH_M_CHORD_POOL: ChordPool = [
+  &F_SH_3_MINOR_CHORD,
+  &B3_MINOR_CHORD,
+  &C_SH_4_MINOR_CHORD,
+  &A3_MAJOR_CHORD,
+  &D4_MAJOR_CHORD,
+  &E4_MAJOR_CHORD,
+  &G_SH_3_DEM_CHORD,
+];
+pub static GM_CHORD_POOL: ChordPool = [
+  &G3_MINOR_CHORD,
+  &C4_MINOR_CHORD,
+  &D4_MINOR_CHORD,
+  &A_SH_3_MAJOR_CHORD,
+  &D_SH_4_MAJOR_CHORD,
+  &F4_MAJOR_CHORD,
+  &A3_DEM_CHORD,
+];
+pub static G_SH_M_CHORD_POOL: ChordPool = [
+  &G_SH_3_MINOR_CHORD,
+  &C_SH_4_MINOR_CHORD,
+  &D_SH_4_MINOR_CHORD,
+  &B3_MAJOR_CHORD,
+  &E4_MAJOR_CHORD,
+  &F_SH_4_MAJOR_CHORD,
+  &A_SH_3_DEM_CHORD,
+];
+pub static A_CHORD_POOL: ChordPool = [
+  &B3_MINOR_CHORD,
+  &C_SH_4_MINOR_CHORD,
+  &F_SH_4_MINOR_CHORD,
+  &A3_MAJOR_CHORD,
+  &D4_MAJOR_CHORD,
+  &E4_MAJOR_CHORD,
+  &G_SH_4_DEM_CHORD,
+];
+pub static A_SH_CHORD_POOL: ChordPool = [
+  &C4_MINOR_CHORD,
+  &D4_MINOR_CHORD,
+  &G4_MINOR_CHORD,
+  &A_SH_3_MAJOR_CHORD,
+  &D_SH_4_MAJOR_CHORD,
+  &F4_MAJOR_CHORD,
+  &A4_DEM_CHORD,
+];
+pub static B_CHORD_POOL: ChordPool = [
+  &C_SH_4_MINOR_CHORD,
+  &D_SH_4_MINOR_CHORD,
+  &G_SH_4_MINOR_CHORD,
+  &B3_MAJOR_CHORD,
+  &E4_MAJOR_CHORD,
+  &F_SH_4_MAJOR_CHORD,
+  &A_SH_4_DEM_CHORD,
+];
+pub static C_CHORD_POOL: ChordPool = [
+  &D3_MINOR_CHORD,
+  &E3_MINOR_CHORD,
+  &A3_MINOR_CHORD,
+  &C3_MAJOR_CHORD,
+  &F3_MAJOR_CHORD,
+  &G3_MAJOR_CHORD,
+  &B3_DEM_CHORD,
+];
+pub static C_SH_CHORD_POOL: ChordPool = [
+  &D_SH_3_MINOR_CHORD,
+  &F3_MINOR_CHORD,
+  &A_SH_3_MINOR_CHORD,
+  &C_SH_3_MAJOR_CHORD,
+  &F_SH_3_MAJOR_CHORD,
+  &G_SH_3_MAJOR_CHORD,
+  &C4_DEM_CHORD,
+];
+pub static D_CHORD_POOL: ChordPool = [
+  &E3_MINOR_CHORD,
+  &F_SH_3_MINOR_CHORD,
+  &B3_MINOR_CHORD,
+  &D3_MAJOR_CHORD,
+  &G3_MAJOR_CHORD,
+  &A3_MAJOR_CHORD,
+  &C_SH_4_DEM_CHORD,
+];
+pub static D_SH_CHORD_POOL: ChordPool = [
+  &F3_MINOR_CHORD,
+  &G3_MINOR_CHORD,
+  &C4_MINOR_CHORD,
+  &D_SH_3_MAJOR_CHORD,
+  &G_SH_3_MAJOR_CHORD,
+  &A_SH_3_MAJOR_CHORD,
+  &D4_DEM_CHORD,
+];
+pub static E_CHORD_POOL: ChordPool = [
+  &F_SH_3_MINOR_CHORD,
+  &G_SH_3_MINOR_CHORD,
+  &C_SH_4_MINOR_CHORD,
+  &E3_MAJOR_CHORD,
+  &A3_MAJOR_CHORD,
+  &B3_MAJOR_CHORD,
+  &D_SH_4_DEM_CHORD,
+];
+pub static F_CHORD_POOL: ChordPool = [
+  &G3_MINOR_CHORD,
+  &A3_MINOR_CHORD,
+  &D4_MINOR_CHORD,
+  &F3_MAJOR_CHORD,
+  &A_SH_3_MAJOR_CHORD,
+  &C4_MAJOR_CHORD,
+  &E4_DEM_CHORD,
+];
+pub static F_SH_CHORD_POOL: ChordPool = [
+  &G_SH_3_MINOR_CHORD,
+  &A_SH_3_MINOR_CHORD,
+  &D_SH_4_MINOR_CHORD,
+  &F_SH_3_MAJOR_CHORD,
+  &B3_MAJOR_CHORD,
+  &C_SH_4_MAJOR_CHORD,
+  &F4_DEM_CHORD,
+];
+pub static G_CHORD_POOL: ChordPool = [
+  &A3_MINOR_CHORD,
+  &B3_MINOR_CHORD,
+  &E4_MINOR_CHORD,
+  &G3_MAJOR_CHORD,
+  &C4_MAJOR_CHORD,
+  &D4_MAJOR_CHORD,
+  &F_SH_4_DEM_CHORD,
+];
+pub static G_SH_CHORD_POOL: ChordPool = [
+  &A_SH_3_MINOR_CHORD,
+  &C4_MINOR_CHORD,
+  &F4_MINOR_CHORD,
+  &G_SH_3_MAJOR_CHORD,
+  &C_SH_4_MAJOR_CHORD,
+  &D_SH_4_MAJOR_CHORD,
+  &G4_DEM_CHORD,
+];
 
 /* Keys */
-pub static AM: Key = Key { lead: AM_LEAD, chords: AM_CHORD_POOL };
-pub static A: Key = Key { lead: A_LEAD, chords: A_CHORD_POOL };
-pub static A_SH_M: Key = Key { lead: A_SH_M_LEAD, chords: A_SH_M_CHORD_POOL };
-pub static A_SH: Key = Key { lead: A_SH_LEAD, chords: A_SH_CHORD_POOL };
-pub static BM: Key = Key { lead: BM_LEAD, chords: BM_CHORD_POOL };
-pub static B: Key = Key { lead: B_LEAD, chords: B_CHORD_POOL };
-pub static CM: Key = Key { lead: CM_LEAD, chords: CM_CHORD_POOL };
-pub static C: Key = Key { lead: C_LEAD, chords: C_CHORD_POOL };
-pub static C_SH_M: Key = Key { lead: C_SH_M_LEAD, chords: C_SH_M_CHORD_POOL };
-pub static C_SH: Key = Key { lead: C_SH_LEAD, chords: C_SH_CHORD_POOL };
-pub static DM: Key = Key { lead: DM_LEAD, chords: DM_CHORD_POOL };
-pub static D: Key = Key { lead: D_LEAD, chords: D_CHORD_POOL };
-pub static D_SH_M: Key = Key { lead: D_SH_M_LEAD, chords: D_SH_M_CHORD_POOL };
-pub static D_SH: Key = Key { lead: D_SH_LEAD, chords: D_SH_CHORD_POOL };
-pub static EM: Key = Key { lead: EM_LEAD, chords: EM_CHORD_POOL };
-pub static E: Key = Key { lead: E_LEAD, chords: E_CHORD_POOL };
-pub static FM: Key = Key { lead: FM_LEAD, chords: FM_CHORD_POOL };
-pub static F: Key = Key { lead: F_LEAD, chords: F_CHORD_POOL };
-pub static F_SH_M: Key = Key { lead: F_SH_M_LEAD, chords: F_SH_M_CHORD_POOL };
-pub static F_SH: Key = Key { lead: F_SH_LEAD, chords: F_SH_CHORD_POOL };
-pub static GM: Key = Key { lead: GM_LEAD, chords: GM_CHORD_POOL };
-pub static G: Key = Key { lead: G_LEAD, chords: G_CHORD_POOL };
-pub static G_SH_M: Key = Key { lead: G_SH_M_LEAD, chords: G_SH_M_CHORD_POOL };
-pub static G_SH: Key = Key { lead: G_SH_LEAD, chords: G_SH_CHORD_POOL };
+pub static AM: Key = Key {
+  lead: AM_LEAD,
+  chords: AM_CHORD_POOL,
+};
+pub static A: Key = Key {
+  lead: A_LEAD,
+  chords: A_CHORD_POOL,
+};
+pub static A_SH_M: Key = Key {
+  lead: A_SH_M_LEAD,
+  chords: A_SH_M_CHORD_POOL,
+};
+pub static A_SH: Key = Key {
+  lead: A_SH_LEAD,
+  chords: A_SH_CHORD_POOL,
+};
+pub static BM: Key = Key {
+  lead: BM_LEAD,
+  chords: BM_CHORD_POOL,
+};
+pub static B: Key = Key {
+  lead: B_LEAD,
+  chords: B_CHORD_POOL,
+};
+pub static CM: Key = Key {
+  lead: CM_LEAD,
+  chords: CM_CHORD_POOL,
+};
+pub static C: Key = Key {
+  lead: C_LEAD,
+  chords: C_CHORD_POOL,
+};
+pub static C_SH_M: Key = Key {
+  lead: C_SH_M_LEAD,
+  chords: C_SH_M_CHORD_POOL,
+};
+pub static C_SH: Key = Key {
+  lead: C_SH_LEAD,
+  chords: C_SH_CHORD_POOL,
+};
+pub static DM: Key = Key {
+  lead: DM_LEAD,
+  chords: DM_CHORD_POOL,
+};
+pub static D: Key = Key {
+  lead: D_LEAD,
+  chords: D_CHORD_POOL,
+};
+pub static D_SH_M: Key = Key {
+  lead: D_SH_M_LEAD,
+  chords: D_SH_M_CHORD_POOL,
+};
+pub static D_SH: Key = Key {
+  lead: D_SH_LEAD,
+  chords: D_SH_CHORD_POOL,
+};
+pub static EM: Key = Key {
+  lead: EM_LEAD,
+  chords: EM_CHORD_POOL,
+};
+pub static E: Key = Key {
+  lead: E_LEAD,
+  chords: E_CHORD_POOL,
+};
+pub static FM: Key = Key {
+  lead: FM_LEAD,
+  chords: FM_CHORD_POOL,
+};
+pub static F: Key = Key {
+  lead: F_LEAD,
+  chords: F_CHORD_POOL,
+};
+pub static F_SH_M: Key = Key {
+  lead: F_SH_M_LEAD,
+  chords: F_SH_M_CHORD_POOL,
+};
+pub static F_SH: Key = Key {
+  lead: F_SH_LEAD,
+  chords: F_SH_CHORD_POOL,
+};
+pub static GM: Key = Key {
+  lead: GM_LEAD,
+  chords: GM_CHORD_POOL,
+};
+pub static G: Key = Key {
+  lead: G_LEAD,
+  chords: G_CHORD_POOL,
+};
+pub static G_SH_M: Key = Key {
+  lead: G_SH_M_LEAD,
+  chords: G_SH_M_CHORD_POOL,
+};
+pub static G_SH: Key = Key {
+  lead: G_SH_LEAD,
+  chords: G_SH_CHORD_POOL,
+};
 
-pub static KEYS: [&Key; 24] = [&AM, &A_SH_M, &BM, &CM, &C_SH_M, &DM, &D_SH_M, &EM, &FM, &F_SH_M, &GM, &G_SH_M, &A, &B, &C, &D, &E, &F, &G, &A_SH, &C_SH, &D_SH, &F_SH, &G_SH];
+pub static KEYS: [&Key; 24] = [
+  &AM, &A_SH_M, &BM, &CM, &C_SH_M, &DM, &D_SH_M, &EM, &FM, &F_SH_M, &GM, &G_SH_M, &A, &B, &C, &D,
+  &E, &F, &G, &A_SH, &C_SH, &D_SH, &F_SH, &G_SH,
+];

@@ -8,9 +8,9 @@ mod wav_tools;
 mod wavman;
 
 use rand::prelude::*;
+use std::env;
 use std::fs::File;
 use std::io::prelude::*;
-use std::env;
 
 fn main() {
   let args: Vec<String> = env::args().collect();

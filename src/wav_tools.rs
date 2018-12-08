@@ -2,9 +2,9 @@ extern crate byteorder;
 extern crate rand;
 
 use rand::prelude::*;
+use std::env;
 use std::fs::File;
 use std::io::prelude::*;
-use std::env;
 
 pub fn get_wav_header(sample_rate: u32, num_samples: u32) -> Vec<u8> {
   use byteorder::{LittleEndian, WriteBytesExt};
