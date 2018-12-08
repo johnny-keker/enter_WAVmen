@@ -7,7 +7,6 @@ mod notes_tools;
 mod wav_tools;
 mod wavman;
 
-use rand::prelude::*;
 use std::env;
 use std::fs::File;
 use std::io::prelude::*;
